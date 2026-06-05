@@ -1,18 +1,17 @@
-export const initialState = {
-    employees: [
+const savedEmployees =
+    JSON.parse(
+        localStorage.getItem("employees")
+    ) || [
         {
             id: 1,
             name: "Srinu",
             role: "Frontend Developer",
-            department:"IT"
-        },
+            department: "IT"
+        }
+    ];
 
-        {
-            id: 2,
-            name: "Usha",
-            role: "UI Designer",
-        },
-    ],
+export const initialState = {
+    employees: savedEmployees,
 };
 
 export function employeeReducer(

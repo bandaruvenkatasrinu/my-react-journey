@@ -1,6 +1,7 @@
 import {
     createContext,
     useReducer,
+    useEffect,
 } from 'react';
 
 import {
@@ -19,6 +20,13 @@ export function EmployeeProvider({
             employeeReducer,
             initialState
         );
+    
+    useEffect(() => {
+        localStorage.setItem(
+            "employees",
+            JSON.stringify(state.employees)
+        );
+    }, [state.employees]);
     
     return (
         <EmployeeContext.Provider
